@@ -1,0 +1,12 @@
+﻿@model ITechArt.Blog.Models.RegisterModel
+
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "register-window-form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+    <input class="register-window-username" data-val="true" data-val-required="The Name field is required." id="Name" name="Name" type="text" value="" placeholder="Username">
+    <input class="register-window-password" data-val="true" data-val-required="The Password field is required." id="Password" name="Password" type="password" value="" placeholder="Password">
+    <input class="register-window-password" data-val="true" data-val-equalto="Passwords do not match" data-val-equalto-other="*.Password" data-val-required="The ConfirmPassword field is required." id="ConfirmPassword" name="ConfirmPassword" type="password" value="" placeholder="Confirm password">
+    <input type="submit" value="Register" class="register-window-btn" />
+}

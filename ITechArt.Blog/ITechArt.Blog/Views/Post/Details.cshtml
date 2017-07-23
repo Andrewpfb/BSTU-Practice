@@ -1,0 +1,61 @@
+﻿@model ITechArt.Blog.Models.PostViewModel
+
+
+@{
+    ViewBag.Title = "Details Post";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="post-img-entry">
+    @if (User.IsInRole("Admin"))
+    {
+        <div class="post-img-edit">
+            <a href="@Url.Action("Edit", "Post", new { id = Model.Id } , null)">
+                <img src="~/Images/edit.png" alt="" />
+            </a>
+        </div>
+        <div class="post-img-del">
+            <a class="viewDialog" , data-dialog-title="Delete model"
+               href="@Url.Action("Delete", "Post", new { id = Model.Id }, null)">
+                <img src="~/Images/del.png" alt="" />
+            </a>
+        </div>
+        <div class="post-img-tw">
+            <a href="//twitter.com" target="_blank">
+                <img src="~/Images/tw.png" alt="" />
+            </a>
+        </div>
+        <div class="post-img-fb">
+            <a href="//facebook.com" target="_blank">
+                <img src="~/Images/fb.png" alt="" />
+            </a>
+        </div>
+    }
+    <div class="post-img-entry-title">
+        <div>
+            <span>@Model.Title</span>
+        </div>
+    </div>
+    <img src=@Model.ImagePath width="886" height="460" />
+</div>
+<div class="post-entry-body">
+    <div class="post-entry-body-date">
+        @Html.DisplayFor(model => model.PostedOn) by @Html.DisplayFor(model => model.Author)
+    </div>
+    <div class="post-entry-body-link-more">
+        @Html.ActionLink("Sub heading go here", "Details", "Post", new { id = Model.Id }, null)
+    </div>
+    <div class="post-entry-body-desc">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+</div>
+@if (User.Identity.IsAuthenticated)
+{
+    @Html.Action("CommentPart", "Comment", Model.Id)
+    @*@Html.Action("AddComment","Comment")*@
+}
+
+@Scripts.Render("~/Scripts/jquery-3.1.1.min.js")
+@Scripts.Render("~/Scripts/jquery-ui-1.12.1.min.js")
+@Scripts.Render("~/Scripts/placeholder.min.js")

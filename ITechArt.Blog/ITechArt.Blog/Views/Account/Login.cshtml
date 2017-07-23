@@ -1,0 +1,12 @@
+﻿@model ITechArt.Blog.Models.LoginModel
+
+
+@using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "login-window-form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+    <input class="login-window-username" data-val="true" data-val-required="The Name field is required." id="Name" name="Name" type="text" value="" placeholder="Username">
+    <input class="login-window-password" data-val="true" data-val-required="The Password field is required." id="Password" name="Password" type="password" value="" placeholder="Password">
+    <input type="submit" value="Login" class="login-window-btn" />
+}
+

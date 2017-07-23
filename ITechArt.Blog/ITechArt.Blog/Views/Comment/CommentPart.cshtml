@@ -1,0 +1,63 @@
+﻿@model ITechArt.Blog.Models.CommentViewModel
+
+
+<div class="post-entry-comments-body">
+    <h2>Comments</h2>
+    <ul style="list-style:none;">
+        @foreach (var item in Model.CommentsViewList)
+        {
+            if (item.NestedLvl == -1)
+            {
+                <li>
+                    <img class="post-entry-comments-avatar" src="@item.ImagePath" />
+                    <div class="post-entry-comments-username">
+                        @item.Username  &#32
+                        <span> @item.NumberOfElapsedDays days ago</span>
+                    </div>
+                    <div class="post-entry-comments-text">
+                        @item.Text
+                    </div>
+                </li>
+            }
+            else if (item.NestedLvl == 0)
+            {
+                <li class="comment-class-1">
+                    <img class="post-entry-comments-avatar" src="@item.ImagePath" />
+                    <div class="post-entry-comments-username">
+                        @item.Username  &#32 <span style="color:black">to </span> &#32 @item.ParentAuthor &#32
+                        <span> @item.NumberOfElapsedDays days ago</span>
+                    </div>
+                    <div class="post-entry-comments-text">
+                        @item.Text
+                    </div>
+                </li>
+            }
+            else if (item.NestedLvl == 1)
+            {
+                <li class="comment-class-2">
+                    <img class="post-entry-comments-avatar" src="@item.ImagePath" />
+                    <div class="post-entry-comments-username">
+                        @item.Username  &#32 <span style="color:black">to </span> &#32 @item.ParentAuthor &#32
+                        <span> @item.NumberOfElapsedDays days ago</span>
+                    </div>
+                    <div class="post-entry-comments-text">
+                        @item.Text
+                    </div>
+                </li>
+            }
+            else if (item.NestedLvl == 2)
+            {
+                <li class="comment-class-3">
+                    <img class="post-entry-comments-avatar" src="@item.ImagePath" />
+                    <div class="post-entry-comments-username">
+                        @item.Username  &#32 <span style="color:black">to </span> &#32 @item.ParentAuthor &#32
+                        <span> @item.NumberOfElapsedDays days ago</span>
+                    </div>
+                    <div class="post-entry-comments-text">
+                        @item.Text
+                    </div>
+                </li>
+            }
+        }
+    </ul>
+</div>

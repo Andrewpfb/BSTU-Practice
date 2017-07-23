@@ -1,0 +1,14 @@
+﻿@model ITechArt.Blog.Models.TagViewModel
+
+
+<div class="right-sidebar-cloud-tags">
+    <h2>Popular Tags</h2>
+    <ul style="list-style:none">
+        @foreach (var tagInfo in Model.TagsDict)
+        {
+            <li style="display:inline; margin-left:5px;">
+                <div style="cursor:pointer;display:inline-block"><font size="@tagInfo.Value">@tagInfo.Key</font></div>
+            </li>
+        }
+    </ul>
+</div>

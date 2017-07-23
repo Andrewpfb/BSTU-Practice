@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/themes/base/jquery-ui.css")
+</head>
+<body>
+    <div id="header">
+        <div class="menu-background">
+            <form action="/?page=1/">
+                <button type="submit" class="menu-big-btn">Creative<sup>+</sup></button>
+            </form>
+            <ul class="nav">
+                <li>@Html.ActionLink("Articles", "", "")</li>
+                <li>@Html.ActionLink("Tutorials", "", "")</li>
+                <li>@Html.ActionLink("Design", "", "")</li>
+                <li>@Html.ActionLink("Web design", "", "")</li>
+                <li>@Html.ActionLink("Other", "", "")</li>
+                <li>@Html.ActionLink("Contact", "", "")</li>
+                @if (User.IsInRole("Admin"))
+                {
+                    <li>@Html.ActionLink("Create Post", "Create", "Post")</li>
+                }
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li class="auth-username"> Hello, @User.Identity.Name.Split('@')[0]</li>
+                    <li class="auth-logout">@Html.ActionLink("Logout", "Logout", "Account")</li>
+                }
+                else
+                {
+                    <li class="not-auth-reg">
+                        <a class="viewDialog" , data-dialog-title="Register"
+                           href="@Url.Action("Register","Account")">
+                            Register
+                        </a>
+                    </li>
+                    <li class="not-auth-login">
+                        <a class="viewDialog" , data-dialog-title="Login"
+                           href="@Url.Action("Login","Account")">
+                            Login
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="little-sidebar">
+        <a href="//dribbble.com" target="_blank">
+            <button type="button">
+                <img src="~/Images/ball.png" alt="dribble logo" />
+            </button>
+        </a>
+        <a href="//twitter.com" target="_blank">
+            <button type="button">
+                <img src="~/Images/tw-l-on.png" alt="twitter logo" />
+            </button>
+        </a>
+        <a href="//ru.wikipedia.org/wiki/RSS" target="_blank">
+            <button type="button">
+                <img src="~/Images/rss-l.png" alt="rss-logo" />
+            </button>
+        </a>
+        <a href="//facebook.com/" target="_blank">
+            <button type="button">
+                <img src="~/Images/fb-l.png" alt="facebook logo" />
+            </button>
+        </a>
+    </div>
+    <div id="main">
+        @RenderBody()
+        @RenderSection("scripts", required: false)
+    </div>
+    <div id="footer">
+        <div class="footer-block">
+            <div class="footer-block-email">
+                <input class="footer-block-email-img" type="text" value="Join Our Newsletter Here"
+                       onfocus="doClear(this)"
+                       onblur="doDefault(this)" />
+                <button>Join</button>
+            </div>
+        </div>
+        <div class="footer-text">
+            Quisque turpis lorem, vehicula eget rhoncus vel, ultricies ac mauris. Morbi lectus velit, tincidunt congue pharetra eu, varius nec libero. Vivamus justo risus, dignissim ac vestibulum eget, egestas rutrum magna. Etiam malesuada nisi et nisl volutpat tristique.
+            <p></p>
+            <div class="footer-social-img">
+                <a href="https://www.facebook.com" target="_blank">
+                    <img src="~/Images/fb-bot.png" alt="" />
+                </a>
+            </div>
+            <div class="footer-social-img">
+                <a href="https://twitter.com" target="_blank">
+                    <img src="~/Images/tw-bot.png" alt="" />
+                </a>
+            </div>
+            <div class="footer-social-img">
+                <a href="https://ru.wikipedia.org/wiki/RSS" target="_blank">
+                    <img src="~/Images/rss-bot.png" alt="" />
+                </a>
+            </div>
+            <p class="footer-copyright">Copyright 2012 Footer here</p>
+        </div>
+    </div>
+</body>
+</html>

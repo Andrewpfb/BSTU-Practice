@@ -1,0 +1,16 @@
+﻿@model ITechArt.Blog.Models.PostViewModel
+
+
+<div class="right-sidebar-recent-post">
+    <h2>Recent  Posts</h2>
+    <ul>
+        @foreach (var recPos in Model.Posts)
+        {
+            <li>
+                @Html.ActionLink(recPos.Title, "Details", "Post", new { id = recPos.Id }, null)
+                <p> @Html.DisplayFor(r => recPos.PostedOn)</p>
+            </li>
+        }
+    </ul>
+</div>
+

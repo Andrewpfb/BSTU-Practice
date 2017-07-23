@@ -1,0 +1,80 @@
+﻿@using ITechArt.Blog.Helpers
+
+
+@model  ITechArt.Blog.Models.PostViewModel
+
+
+@{
+    ViewBag.Title = "ITechArt Blog";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="right-sidebar">
+    <div class="right-sidebar-desc">
+        <h2>Creative+ Design Blog</h2>
+        <p class="right-sidebar-desc-str">Your Bi-Line to go her</p>
+        <p class="right-sidebar-desc-paragraph">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum scelerisque dignissim massa, sed gravida nisi sollicitudin vel. Sed nec erat feugiat </p>
+    </div>
+    <div class="right-sidebar-receive-upd">
+        <h2>Recieve Updates </h2>
+        <div class="right-sidebar-receive-email">
+            <input class="right-sidebar-receive-email-img" type="text" value="Leave Your Email here"
+                   onfocus="doClear(this)"
+                   onblur="doDefault(this)" />
+            <button>Join</button>
+        </div>
+    </div>
+    @Html.Action("RecentPostPart")
+    @Html.Action("PopularTagPart")
+</div>
+@foreach (var post in Model.Posts)
+{
+    <div class="post-img-homepage">
+        @if (User.IsInRole("Admin"))
+        {
+            <div class="post-img-edit">
+                <a href="@Url.Action("Edit", "Post", new { id = post.Id }, null)">
+                    <img src="~/Images/edit.png" alt="" />
+                </a>
+            </div>
+            <div class="post-img-del">
+                <a class="viewDialog" , data-dialog-title="Delete Post"
+                   href="@Url.Action("Delete", "Post", new { id = post.Id }, null)">
+                    <img src="~/Images/del.png" alt="" />
+                </a>
+            </div>
+            <div class="post-img-tw">
+                <a href="https://www.twitter.com" target="_blank">
+                    <img src="~/Images/tw.png" alt="" />
+                </a>
+            </div>
+            <div class="post-img-fb">
+                <a href="https://www.facebook.com" target="_blank">
+                    <img src="~/Images/fb.png" alt="" />
+                </a>
+            </div>
+        }
+        <img class="post-img-homepage-master-img" src=@post.ImagePath width="625" height="306" />
+    </div>
+    <div class="post-body">
+        <div class="post-body-title">
+            @post.Title;
+        </div>
+        <div class="post-body-date">
+            @Html.DisplayFor(model => post.PostedOn)
+        </div>
+        <div class="post-body-link-more">
+            @Html.ActionLink("Sub heading go here", "Details", "Post", new { id = post.Id }, null)
+        </div>
+        <div class="post-body-short-decs">
+            @post.ShortDescription
+        </div>
+    </div>
+}
+<div class="btn-group">
+    @Html.PageLinks(Model.PageInfo, x => Url.Action("Index", new { page = x }))
+</div>
+@Scripts.Render("~/Scripts/jquery-3.1.1.min.js")
+@Scripts.Render("~/Scripts/jquery-ui-1.12.1.min.js")
+@Scripts.Render("~/Scripts/placeholder.min.js")

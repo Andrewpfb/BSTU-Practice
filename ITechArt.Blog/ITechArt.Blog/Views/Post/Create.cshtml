@@ -1,0 +1,45 @@
+﻿@model ITechArt.Blog.Models.Post
+
+
+@{
+    ViewBag.Title = "Create Post";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("Create", "Post", FormMethod.Post, new { @class = "create-edit-form" }))
+{
+    @Html.AntiForgeryToken()
+    <div>
+        <h4>Create a Post</h4>
+        <div class="create-edit-form-property-block">
+            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "create-edit-form-field-name" })
+            <div>
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "create-edit-form-field-property", autocomplete = "off" } })
+            </div>
+        </div>
+        <div class="create-edit-form-property-block">
+            @Html.LabelFor(model => model.ShortDescription, htmlAttributes: new { @class = "create-edit-form-field-name" })
+            <div>
+                @Html.EditorFor(model => model.ShortDescription, new { htmlAttributes = new { @class = "create-edit-form-field-property", autocomplete = "off" } })
+            </div>
+        </div>
+        <div class="create-edit-form-property-block">
+            @Html.LabelFor(model => model.Tags, htmlAttributes: new { @class = "create-edit-form-field-name" })
+            <div>
+                @Html.EditorFor(model => model.Tags, new { htmlAttributes = new { @class = "create-edit-form-field-property", autocomplete = "off" } })
+            </div>
+        </div>
+        <div class="create-edit-form-property-block">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "create-edit-form-field-name" })
+            <div>
+                @*<textarea autocomplete="off" class="create-edit-form-field-property-desc" data-val="true" data-val-required="The Description field is required." id="Description" name="Description" type="text" value=""></textarea>*@
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "create-edit-form-field-property-desc", autocomplete = "off" } })
+            </div>
+        </div>
+        <div class="create-edit-form-property-block">
+            <input type="submit" value="Create Post" class="create-edit-form-send-btn" />
+            <input type="button" value="Cancel" onclick="history.back();" class="create-edit-form-cancel-btn" />
+        </div>
+    </div>
+}
