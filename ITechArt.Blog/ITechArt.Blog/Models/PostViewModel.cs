@@ -26,16 +26,6 @@ namespace ITechArt.Blog.Models
 
         public string ImagePath { get; set; }
 
-        //public List<Post> postsList { get; set; }
-        //public PostViewModel()
-        //{
-        //    postsList = new List<Post>();
-        //}
-        //public PostViewModel(List<Post> postsList)
-        //{
-        //    this.postsList = postsList;
-        //}
-
         public IEnumerable<Post> Posts { get; set; }
         public PostPageInfoModel PageInfo { get; set; }
     }
