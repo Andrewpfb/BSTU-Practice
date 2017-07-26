@@ -26,6 +26,8 @@ namespace ITechArt.Blog.Models
 
         public string ImagePath { get; set; }
 
+        public int CommentCount { get; set; }
+
         public IEnumerable<Post> Posts { get; set; }
         public PostPageInfoModel PageInfo { get; set; }
     }

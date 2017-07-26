@@ -55,6 +55,8 @@
                 </a>
             </div>
         }
+
+        @Html.Action("CommentCountPart", "Comment", new { id = post.Id })
         <img class="post-img-homepage-master-img" src=@post.ImagePath width="625" height="306" />
     </div>
     <div class="post-body">

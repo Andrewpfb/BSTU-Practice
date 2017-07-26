@@ -561,6 +561,19 @@ ul.nav span {
         margin-top: 5px;
     }
 
+.post-img-comment-count {
+    background-color: #f26c4f;
+    border: 1px solid #f26c4f;
+    border-radius: 3px;
+    bottom: 12px;
+    color:white;
+    height: 20px;
+    padding:5px 0 5px 15px;
+    right: 15px;
+    position: absolute;
+    width: 105px;
+}
+
 .post-body {
     background-color: white;
     border: 1px solid #d7d7d7;

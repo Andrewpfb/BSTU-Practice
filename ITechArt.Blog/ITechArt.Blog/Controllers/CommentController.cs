@@ -23,6 +23,35 @@ namespace ITechArt.Blog.Controllers
             return PartialView(CreateCommentList.CreateViewListComment(commentsList));
         }
 
+        public ActionResult Delete(int id)
+        {
+            Comment comm = db.Comment.Find(id);
+            if (comm!= null)
+            {
+                return PartialView("Delete",comm);
+            }
+            return View("Index", "Home", null);
+        }
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        [ActionName("Delete")]
+        public ActionResult DeleteRecord(int id)
+        {
+            Comment comm = db.Comment.Find(id);
+            if (comm != null)
+            {
+                db.Comment.Remove(comm);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Details", "Post",new { id = comm.PostId });
+        }
+
+
+        public ActionResult CommentCountPart(int id=0)
+        {
+            int commentCount = db.Comment.Where(p => p.PostId == id).Count();
+            return PartialView(commentCount);
+        }
 
         //TODO Добавить функционал по комментариям.
         //[HttpGet]
