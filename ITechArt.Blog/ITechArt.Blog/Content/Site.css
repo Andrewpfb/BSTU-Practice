@@ -787,10 +787,33 @@ ul.nav span {
 .comment-class-3 {
     margin-left: 165px;
 }
+.create-comment-form-comment-text {
+    border: 2px solid #9c9c9c;
+    border-radius: 4px;
+    height: 50px;
+    margin-left:25px;
+    margin-right:25px;
+    outline: none;
+    resize: none;
+    width: 850px;
+    white-space: normal;
+}
+.create-comment-form-btn {
+    background-color: #f26c4f;
+    border-radius: 4px;
+    border: 1px solid #f26c4f;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    height: 28px;
+    margin-bottom:5px;
+    margin-left:25px;
+    width: 100px;
+}
 
 
 /*Create and edit post*/
-
 .create-edit-form {
     background-color: white;
     border: 1px solid #d7d7d7;

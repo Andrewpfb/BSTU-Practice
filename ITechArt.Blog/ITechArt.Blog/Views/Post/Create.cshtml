@@ -33,7 +33,6 @@
         <div class="create-edit-form-property-block">
             @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "create-edit-form-field-name" })
             <div>
-                @*<textarea autocomplete="off" class="create-edit-form-field-property-desc" data-val="true" data-val-required="The Description field is required." id="Description" name="Description" type="text" value=""></textarea>*@
                 @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "create-edit-form-field-property-desc", autocomplete = "off" } })
             </div>
         </div>

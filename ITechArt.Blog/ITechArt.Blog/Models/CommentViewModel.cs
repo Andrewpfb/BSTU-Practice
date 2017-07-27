@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 
 namespace ITechArt.Blog.Models
@@ -11,6 +12,7 @@ namespace ITechArt.Blog.Models
         public string ImagePath { get; set; }
         public string Username { get; set; }
         public int NumberOfElapsedDays { get; set; }
+        [DataType(DataType.MultilineText)]
         public string Text { get; set; }
         public int NestedLvl { get; set; }
         public List<CommentViewModel> CommentsViewList { get; set; }

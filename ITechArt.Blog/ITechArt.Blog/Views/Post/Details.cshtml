@@ -53,7 +53,7 @@
 @if (User.Identity.IsAuthenticated)
 {
     @Html.Action("CommentPart", "Comment", Model.Id)
-    @*@Html.Action("AddComment","Comment")*@
+    @Html.Action("AddComment","Comment")
 }
 
 @Scripts.Render("~/Scripts/jquery-3.1.1.min.js")
