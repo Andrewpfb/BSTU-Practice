@@ -1,7 +1,9 @@
-﻿@model ITechArt.Blog.Models.Comment
+﻿@model int
 
 
-@ViewBag.PostId
+@{ 
+    string commText = "";
+}
 
 
 @using (Html.BeginForm("AddComment", "Comment", FormMethod.Post))
@@ -9,8 +11,8 @@
     @Html.AntiForgeryToken()
     <div>
         <h4>Add Comment</h4>
-        @Html.EditorFor(model => model.Text, new { htmlAttributes = new { @class = "create-edit-form-field-property-desc", autocomplete = "off" } })
-        <input type="text" hidden value="@ViewBag.PostId" />
+        @Html.EditorFor(ct=>commText, new { htmlAttributes = new { @class = "create-edit-form-field-property-desc", autocomplete = "off" } })
+       @Html.HiddenFor(pi=>Model)
         <input type="submit" value="Add" class="register-window-btn" />
     </div>
 }
