@@ -1,4 +1,7 @@
-﻿@model ITechArt.Blog.Models.PostViewModel
+﻿@using ITechArt.Blog.Service
+
+
+@model ITechArt.Blog.Models.PostViewModel
 
 
 @{
@@ -8,7 +11,7 @@
 
 
 <div class="post-img-entry">
-    @if (User.IsInRole("Admin"))
+    @if (User.IsInRole(ProjectConst.Admin))
     {
         <div class="post-img-edit">
             <a href="@Url.Action("Edit", "Post", new { id = Model.Id } , null)">
@@ -53,7 +56,7 @@
 @if (User.Identity.IsAuthenticated)
 {
     @Html.Action("CommentPart", "Comment", Model.Id)
-    @Html.Action("AddComment","Comment")
+    @Html.Action("AddComment", "Comment")
 }
 
 @Scripts.Render("~/Scripts/jquery-3.1.1.min.js")

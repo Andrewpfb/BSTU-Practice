@@ -1,4 +1,5 @@
 ﻿@using ITechArt.Blog.Helpers
+@using ITechArt.Blog.Service
 
 
 @model  ITechArt.Blog.Models.PostViewModel
@@ -31,7 +32,7 @@
 @foreach (var post in Model.Posts)
 {
     <div class="post-img-homepage">
-        @if (User.IsInRole("Admin"))
+        @if (User.IsInRole(ProjectConst.Admin))
         {
             <div class="post-img-edit">
                 <a href="@Url.Action("Edit", "Post", new { id = post.Id }, null)">

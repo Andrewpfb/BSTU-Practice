@@ -7,6 +7,13 @@ using ITechArt.Blog.Models;
 
 namespace ITechArt.Blog.Service
 {
+    static class DictionaryExtensions
+    {
+        public static bool IsNullOrEmpty<TKey, Tvalue>(this Dictionary<TKey, Tvalue> dict)
+        {
+            return dict == null || dict.Count == 0;
+        }
+    }
     class PartialComparer : IEqualityComparer<Tag>
     {
         public string GetComparablePart(Tag s)
@@ -45,7 +52,11 @@ namespace ITechArt.Blog.Service
                 }
                 unicTagsDictAndFreq.Add(unicTag.Name, Convert.ToDouble(i));
             }
-            double max = Convert.ToDouble(unicTagsDictAndFreq.Values.Max());
+            double max = 0;
+            if (!unicTagsDictAndFreq.IsNullOrEmpty())
+            {
+                max = Convert.ToDouble(unicTagsDictAndFreq.Values.Max());
+            }
             int fontSize = 0;
             double part = 0;
             //Расчет размера шрифта

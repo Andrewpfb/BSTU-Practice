@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Data.Entity;
 
 using ITechArt.Blog.Models;
+using ITechArt.Blog.Service;
 
 
 namespace ITechArt.Blog.Controllers
@@ -38,7 +39,7 @@ namespace ITechArt.Blog.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = ProjectConst.Admin)]
         public ActionResult Edit(int id)
         {
             Post post = db.Post.Find(id);
@@ -49,7 +50,7 @@ namespace ITechArt.Blog.Controllers
             return View(post);
         }
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = ProjectConst.Admin)]
         public ActionResult Edit(Post post)
         {
             Post newPost = db.Post.Find(post.Id);
@@ -70,13 +71,13 @@ namespace ITechArt.Blog.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = ProjectConst.Admin)]
         public ActionResult Create()
         {
             return View();
         }
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = ProjectConst.Admin)]
         public ActionResult Create(Post post)
         {
             //Автор поста, изображение - постоянно, так как на макете не было поля для добавления изображения.
@@ -90,7 +91,7 @@ namespace ITechArt.Blog.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = ProjectConst.Admin)]
         public ActionResult Delete(int id)
         {
             Post post = db.Post.Find(id);
@@ -101,7 +102,7 @@ namespace ITechArt.Blog.Controllers
             return View("Index", "Home", null);
         }
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = ProjectConst.Admin)]
         [ActionName("Delete")]
         public ActionResult DeleteRecord(int id)
         {

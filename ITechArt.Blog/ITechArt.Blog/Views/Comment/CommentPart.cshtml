@@ -39,7 +39,8 @@
                         @if (User.IsInRole("Admin"))
                         {
                             <a class="viewDialog" , data-dialog-title="Delete model"
-                               href="@Url.Action("Delete", "Comment", new { id = item.CommentId }, null)"> Delete
+                               href="@Url.Action("Delete", "Comment", new { id = item.CommentId }, null)">
+                                Delete
                             </a>
                         }
                     </div>

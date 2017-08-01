@@ -6,7 +6,7 @@
     @Html.AntiForgeryToken()
     <div class="post-entry-comments-body">
         <h2>Add Comment</h2>
-        @Html.EditorFor(ct=>Model.Text, new { htmlAttributes = new { @class = "create-comment-form-comment-text", autocomplete = "off" } })
+        @Html.EditorFor(ct => Model.Text, new { htmlAttributes = new { @class = "create-comment-form-comment-text", autocomplete = "off" } })
         <input type="submit" value="Add" class="create-comment-form-btn" />
     </div>
 }

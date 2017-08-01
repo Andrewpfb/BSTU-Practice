@@ -26,7 +26,8 @@ namespace ITechArt.Blog.Controllers
         public ActionResult RecentPostPart()
         {
             //Получение трех последних постов.
-            List<Post> postsList = db.Post.OrderByDescending(p => p.PostedOn).Take(3).ToList();
+            int countLastPosts = 3;
+            List<Post> postsList = db.Post.OrderByDescending(p => p.PostedOn).Take(countLastPosts).ToList();
             PostViewModel pvm = new PostViewModel();
             pvm.Posts = postsList;
             return PartialView(pvm);

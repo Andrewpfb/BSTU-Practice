@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using ITechArt.Blog.Service
+
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -21,14 +24,14 @@
                 <li>@Html.ActionLink("Web design", "", "")</li>
                 <li>@Html.ActionLink("Other", "", "")</li>
                 <li>@Html.ActionLink("Contact", "", "")</li>
-                @if (User.IsInRole("Admin"))
+                @if (User.IsInRole(ProjectConst.Admin))
                 {
                     <li>@Html.ActionLink("Create Post", "Create", "Post")</li>
                 }
                 @if (User.Identity.IsAuthenticated)
                 {
                     <li class="auth-username"> Hello, @User.Identity.Name.Split('@')[0]</li>
-                    <li class="auth-logout">@Html.ActionLink("Logout", "Logout", "Account")</li>
+                        <li class="auth-logout">@Html.ActionLink("Logout", "Logout", "Account")</li>
                 }
                 else
                 {
@@ -38,12 +41,12 @@
                             Register
                         </a>
                     </li>
-                    <li class="not-auth-login">
-                        <a class="viewDialog" , data-dialog-title="Login"
-                           href="@Url.Action("Login","Account")">
-                            Login
-                        </a>
-                    </li>
+                        <li class="not-auth-login">
+                            <a class="viewDialog" , data-dialog-title="Login"
+                               href="@Url.Action("Login","Account")">
+                                Login
+                            </a>
+                        </li>
                 }
             </ul>
         </div>

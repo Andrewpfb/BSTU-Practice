@@ -9,6 +9,8 @@ namespace ITechArt.Blog.Controllers
 {
     public class AccountController : Controller
     {
+        private const int adminRole = 1;
+        private const int userRole = 2;
         //В проекте используется валидация форм на основе cookies.
         [HttpGet]
         public ActionResult Login()
@@ -61,7 +63,7 @@ namespace ITechArt.Blog.Controllers
                 {
                     using (BlogContext db = new BlogContext())
                     {
-                        db.User.Add(new User { Email = model.Name, Password = model.Password, Role = 2 });
+                        db.User.Add(new User { Email = model.Name, Password = model.Password, Role = userRole });
                         db.SaveChanges();
 
                         user = db.User.Where(u => u.Email == model.Name && u.Password == model.Password).FirstOrDefault();

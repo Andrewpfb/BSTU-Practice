@@ -46,29 +46,25 @@ namespace ITechArt.Blog.Service
 
         private static string GetParentAuthor(int parentId)
         {
-            string tmpParentAuthor;
             if (parentId != 0)
             {
-                tmpParentAuthor = db.Comment.Find(parentId).User.Email.Split('@')[0];
+                return db.Comment.Find(parentId).User.Email.Split('@')[0];
             }
             else
             {
-                tmpParentAuthor = "";
+                return "";
             }
-            return tmpParentAuthor;
         }
         private static int GetNestedLvl(int parentId, int seed)
         {
-            int nestedLvl;
             if (parentId == 0)
             {
-                nestedLvl = -1;
+                return -1;
             }
             else
             {
-                nestedLvl = (int)(parentId - seed);
+                return parentId - seed;
             }
-            return nestedLvl;
         }
     }
 }
